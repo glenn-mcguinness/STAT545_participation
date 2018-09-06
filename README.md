@@ -1,2 +1,2 @@
-# stat545_md_explorer
-In-class activity for Stat 545 at UBC.
+# STAT 545 Exploration of Markdown
+This repo is part of a STAT 545 exercise to explore GitHub and markdown.
