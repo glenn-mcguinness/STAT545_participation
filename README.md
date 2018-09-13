@@ -1,2 +1,2 @@
-# STAT 545 Exploration CONFLICT 
-This repo is part of a STAT 545 exercise to explore GitHub and markdown.
+# STAT 545A Participation Directory 
+This repository contains the in-class activities for STAT 545A. Each classes activity is put in a directory titled "cm###" where "###" is the number of the class.
