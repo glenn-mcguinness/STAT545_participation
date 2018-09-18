@@ -27,7 +27,7 @@ library(tidyverse)
 1. Make a data frame containing the columns `year`, `lifeExp`, `country` from the gapminder data, in that order.
 
 ```{r}
-select(gapminder, year, lifExp, country)
+select(gapminder, year, lifeExp, country)
 ```
 
 2. Select all variables, from `country` to `lifeExp`. 
@@ -51,7 +51,7 @@ select(gapminder, continent, everything())
 5. Rename `continent` to `cont`.
 
 ```{r}
-rename(gapminder, cont~continent)
+rename(gapminder, cont=continent)
 ```
 
 ## `arrange()`
@@ -130,7 +130,7 @@ Your task is to use metaprogramming to check whether a response (like the one ab
 
 1. Find all entries of Canada and Algeria occuring in the '60s. 
 ```{r}
-gapmdiner %>%
+gapminder %>%
   filter((country == "Canada" | country == "Algeria"),
           year >= 1960,
           year < 1970)
