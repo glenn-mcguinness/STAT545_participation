@@ -55,18 +55,24 @@ ggplot(data = gapminder, x = gdpPercap, y = lifeExp) +
     - Note: `ggplot2` does some data wrangling and computations itself! We don't always have to modify the data frame.
 
 ```{r}
-ggplot(data = gapminder, aes(x = gdpPercap, y = log(lifeExp))) + 
+ggplot(data = gapminder, aes(y = log(gdpPercap), x = lifeExp)) + 
   geom_point()
 ```
 
 6. Try again, this time by changing the _scale_ (this way is better).
 
 ```{r}
-ggplot(data = gapminder, aes(x = log(gdpPercap), y = lifeExp)) + 
-  geom_point()
+ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) + 
+  geom_point() +
+  scale_y_log10()
 ```
 
 7. The aesthetic mappings can be specified on the geom layer if you want, instead of the main `ggplot` call. Give it a try:
+
+```{r}
+ggplot(data = gapminder) + 
+  geom_point(aes(y = log(gdpPercap), x = lifeExp))
+```
 
 
 8. Optional: git stage and commit
@@ -85,18 +91,24 @@ Let's build a histogram of life expectancy.
 | Grammar Component     | Specification |
 |-----------------------|---------------|
 | __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
+| __aesthetic mapping__ |  'x' |
+| __geometric object__  |  histogram |
+| scale                 |  linear |
+| statistical transform |  none |
 
 2. Build the histogram of life expectancy.
 
-
+```{r}
+ggplot(data = gapminder, aes(lifeExp)) +
+  geom_histogram()
+```
 
 3. Change the number of bins to 50.
 
-
+```{r}
+ggplot(data = gapminder, aes(lifeExp)) +
+  geom_histogram(bins=50)
+```
 
 4. Instead of a histogram, let's create a kernel density plot.
 
