@@ -229,7 +229,9 @@ a + geom_jitter(aes(x = continent), alpha = 0.25)
 1.  How does the grammar differ from a box plot or violin plot?
     -   ANSWER:
 
-2.  We can add multiple geom *layers* to our plot. Put a jitterplot overtop of the violin plot, starting with our base `b`. Try vice-versa.
+A violin plot shows much more information about the distribution than the box plot.
+
+1.  We can add multiple geom *layers* to our plot. Put a jitterplot overtop of the violin plot, starting with our base `b`. Try vice-versa.
 
 ``` r
 a + geom_violin(aes(x = continent)) +
@@ -263,11 +265,40 @@ Let's make some time/line plot, starting with Canada's life expectancy over time
     3.  Makes the time plot of `lifeExp` over time
     4.  Also displays the points
 
-2.  Attempt to overlay line plots for all countries. That is, repeat the above code, but don't filter. What's wrong here?
+``` r
+gapminder %>%
+  filter(country == "Canada") %>%
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_point()
+```
 
-3.  Use the `group` aesthetic to fix the problem.
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-18-1.png)
 
-4.  Optional: git stage and commit
+1.  Attempt to overlay line plots for all countries. That is, repeat the above code, but don't filter. What's wrong here?
+
+If we don't filter by country, we will have the trends by all countries tangled together into a single line, with a vertical line at every, discrete, year.
+
+``` r
+gapminder %>%
+#  filter(country == "Canada") %>%
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_line()
+```
+
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-19-1.png)
+
+1.  Use the `group` aesthetic to fix the problem.
+
+``` r
+gapminder %>%
+#  filter(country == "Canada") %>%
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_line(aes(group=country), alpha = 0.2)
+```
+
+![](cm006-exercise_files/figure-markdown_github/unnamed-chunk-20-1.png)
+
+1.  Optional: git stage and commit
 
 **Uses of time/line plots**: Visualize trends of a numeric variable over time.
 

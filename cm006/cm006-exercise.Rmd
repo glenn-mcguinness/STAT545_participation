@@ -244,7 +244,7 @@ gapminder %>%
 gapminder %>%
 #  filter(country == "Canada") %>%
   ggplot(aes(x = year, y = lifeExp)) +
-  geom_line(aes(group=country))
+  geom_line(aes(group=country), alpha = 0.2)
 ```
 
 5. Optional: git stage and commit
