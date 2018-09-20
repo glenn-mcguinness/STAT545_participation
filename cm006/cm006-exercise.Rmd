@@ -47,8 +47,8 @@ Notice the "metaprogramming" again!
 4. You _must_ remember to put the aesthetic mappings in the `aes` function! What happens if you forget?
 
 ```{r}
-ggplot(data = gapminder, x = gdpPercap, y = lifeExp) + 
-  geom_point()
+#ggplot(data = gapminder, x = gdpPercap, y = lifeExp) + 
+#  geom_point()
 ```
 
 5. Put the x-axis on a log scale, first by transforming the x variable. 
@@ -167,22 +167,34 @@ Let's hold off on identifying the grammar.
 
 1. Initiate the `ggplot` call to make a scatterplot of `continent` vs `pop`; initiate the log y scale. Store the call in the variable `b`.
 
-
+```{r}
+a + geom_point(aes(x = continent), alpha = 0.1)
+```
 
 2. Add the point geom to `b`. Why is this an ineffective plot?
 
-
+```{r}
+a + geom_jitter(aes(x = continent), alpha = 0.25)
+```
 
 3. A solution is to jitter the points. Add the jitter geom. Re-run the command a few times -- does the plot change? Why?
 
 
+```{r}
+a + geom_jitter(aes(x = continent), alpha = 0.25)
+```
 
 4. How does the grammar differ from a box plot or violin plot?
     - ANSWER: 
 
+A violin plot shows much more information about the distribution than the box plot.
+
 5. We can add multiple geom _layers_ to our plot. Put a jitterplot overtop of the violin plot, starting with our base `b`. Try vice-versa. 
 
-
+```{r}
+a + geom_violin(aes(x = continent)) +
+  geom_jitter(aes(x = continent), alpha = 0.25)
+```
 
 6. Optional: git stage and commit
 
