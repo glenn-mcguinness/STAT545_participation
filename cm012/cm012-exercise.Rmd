@@ -245,7 +245,7 @@ What if we have two variables plus a non-positional categorical variable? Exampl
 select_countries <- c("Sweden", "Denmark", "Norway", "Germany", "Austria")
 gap_select <- gapminder %>% 
   filter(country %in% select_countries) %>% 
-  droplevels() %>%
+  droplevels()
 ggplot(gap_select, aes(year, lifeExp)) +
   geom_line(aes(group=country, colour=country))
 ```
